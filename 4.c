@@ -1,3 +1,4 @@
+```c
 #include <stdio.h>
 #include <string.h>
 
@@ -18,9 +19,9 @@ int main()
 
     float averageSales;
 
-    averageSales = totalSales / 5;
+    averageSales = totalSales / 5; // Logical Error: integer division, use totalSales / 5.0
 
-    printf("Average Sales = %d\n", averageSales);
+    printf("Average Sales = %d\n", averageSales); // Format Specifier Error: float should use %f or %.2f
 
     printf("\n");
 
@@ -28,7 +29,7 @@ int main()
 
     for(int i=1;i<5;i++)
     {
-        if(sales[i] < highestSale)
+        if(sales[i] < highestSale) // Logical Error: for highest value, condition should be sales[i] > highestSale
         {
             highestSale = sales[i];
         }
@@ -46,11 +47,11 @@ int main()
     monthlySales[3] = 180;
     monthlySales[4] = 200;
 
-    monthlySales[5] = 250;
+    monthlySales[5] = 250; // Array Bounds Error: valid indexes are 0 to 4
 
     printf("Monthly Sales\n");
 
-    for(int i=0;i<=5;i++)
+    for(int i=0;i<=5;i++) // Array Bounds Error: should be i < 5
     {
         printf("%d ", monthlySales[i]);
     }
@@ -59,7 +60,7 @@ int main()
 
     char product[8];
 
-    strcpy(product,"LaptopComputer");
+    strcpy(product,"LaptopComputer"); // Buffer Overflow Error: product[8] is too small
 
     printf("%s\n", product);
 
@@ -67,7 +68,7 @@ int main()
 
     char category[15];
 
-    category = "Electronics";
+    category = "Electronics"; // Array Assignment Error: cannot assign string directly to char array, use strcpy()
 
     printf("%s\n", category);
 
@@ -75,9 +76,9 @@ int main()
 
     int stock[5];
 
-    stock["first"] = 100;
+    stock["first"] = 100; // Array Index Error: index must be integer, not string
 
-    stock[2.7] = 200;
+    stock[2.7] = 200; // Array Index Error: index should be integer, not float
 
     for(int i=0;i<5;i++)
     {
@@ -97,7 +98,7 @@ int main()
 
     for(int i=0;i<5;i++)
     {
-        scanf("%d", orders[i]);
+        scanf("%d", orders[i]); // Runtime Error: scanf needs address, use &orders[i]
     }
 
     printf("\n");
@@ -115,7 +116,7 @@ int main()
 
     int revenue[5] = {1000,2000,3000,4000,5000};
 
-    if(revenue[2] = 3000)
+    if(revenue[2] = 3000) // Logical Error: assignment operator used instead of comparison operator ==
     {
         printf("Revenue Matched\n");
     }
@@ -124,7 +125,7 @@ int main()
 
     int backupRevenue[5];
 
-    backupRevenue = revenue;
+    backupRevenue = revenue; // Array Assignment Error: arrays cannot be assigned directly
 
     printf("%d\n", backupRevenue[0]);
 
@@ -134,13 +135,13 @@ int main()
 
     commission[0] = 2500.50;
 
-    printf("%d\n", commission[0]);
+    printf("%d\n", commission[0]); // Format Specifier Error: float should use %f or %.2f
 
     printf("\n");
 
     char city[10];
 
-    city = "Jaipur";
+    city = "Jaipur"; // Array Assignment Error: cannot assign string directly, use strcpy()
 
     printf("%s\n", city);
 
@@ -153,13 +154,13 @@ int main()
     branch[2] = '-';
     branch[3] = 'A';
 
-    printf("%s\n", branch);
+    printf("%s\n", branch); // Logical Error: string is not null-terminated
 
     printf("\n");
 
     int employees[5];
 
-    for(int i=0;i<=5;i++)
+    for(int i=0;i<=5;i++) // Array Bounds Error: should be i < 5
     {
         employees[i] = i * 100;
     }
@@ -175,7 +176,7 @@ int main()
 
     char department[6];
 
-    strcpy(department,"Marketing");
+    strcpy(department,"Marketing"); // Buffer Overflow Error: department[6] is too small
 
     printf("%s\n", department);
 
@@ -183,7 +184,7 @@ int main()
 
     int expenses[5];
 
-    expenses = sales;
+    expenses = sales; // Array Assignment Error: arrays cannot be assigned directly
 
     printf("%d\n", expenses[0]);
 
@@ -191,7 +192,7 @@ int main()
 
     int ratings[5];
 
-    ratings[-1] = 5;
+    ratings[-1] = 5; // Array Bounds Error: negative index is invalid
 
     printf("%d\n", ratings[0]);
 
@@ -205,11 +206,12 @@ int main()
     feedback[3] = 40;
     feedback[4] = 50;
 
-    printf("%s\n", feedback[0]);
+    printf("%s\n", feedback[0]); // Format Specifier Error: int printed using %s
 
     printf("\n");
 
-    printf("Report Generated Successfully\n")
+    printf("Report Generated Successfully\n") // Syntax Error: missing semicolon (;)
 
     return 0;
 }
+```
