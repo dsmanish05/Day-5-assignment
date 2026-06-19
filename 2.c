@@ -1,3 +1,4 @@
+```c
 #include <stdio.h>
 #include <string.h>
 
@@ -14,7 +15,7 @@ int main()
 
     printf("\nNumbers Array\n");
 
-    for(int i=0;i<=10;i++)
+    for(int i=0;i<=10;i++) // Array Bounds Error: valid index is 0 to 9, so condition should be i < 10
     {
         printf("%d ", numbers[i]);
     }
@@ -25,16 +26,16 @@ int main()
 
     for(int i=0;i<10;i++)
     {
-        sum = numbers[i];
+        sum = numbers[i]; // Logical Error: should be sum += numbers[i]
     }
 
     printf("Sum = %d\n", sum);
 
     float average;
 
-    average = sum / 10;
+    average = sum / 10; // Logical Error: integer division, use sum / 10.0
 
-    printf("Average = %d\n", average);
+    printf("Average = %d\n", average); // Format Specifier Error: float should use %f or %.2f
 
     printf("\n");
 
@@ -46,7 +47,7 @@ int main()
 
     for(int i=1;i<5;i++)
     {
-        if(marks[i] < highest)
+        if(marks[i] < highest) // Logical Error: for highest, condition should be marks[i] > highest
         {
             highest = marks[i];
         }
@@ -64,11 +65,11 @@ int main()
     attendance[3] = 0;
     attendance[4] = 1;
 
-    attendance[5] = 1;
+    attendance[5] = 1; // Array Bounds Error: valid index is 0 to 4
 
     int present = 0;
 
-    for(int i=0;i<=5;i++)
+    for(int i=0;i<=5;i++) // Array Bounds Error: should be i < 5
     {
         present += attendance[i];
     }
@@ -79,7 +80,7 @@ int main()
 
     char subject[10];
 
-    strcpy(subject,"ComputerScience");
+    strcpy(subject,"ComputerScience"); // Buffer Overflow Error: string is larger than subject[10]
 
     printf("%s\n", subject);
 
@@ -87,7 +88,7 @@ int main()
 
     char branch[20];
 
-    branch = "IT";
+    branch = "IT"; // Array Assignment Error: cannot assign string directly to char array, use strcpy()
 
     printf("%s\n", branch);
 
@@ -101,15 +102,15 @@ int main()
     college[3] = 'I';
     college[4] = 'T';
 
-    printf("%s\n", college);
+    printf("%s\n", college); // Logical Error: string is not null-terminated, add college[5] = '\0'
 
     printf("\n");
 
     int fees[5];
 
-    fees["two"] = 50000;
+    fees["two"] = 50000; // Array Index Error: index must be integer, not string
 
-    fees[3.5] = 60000;
+    fees[3.5] = 60000; // Array Index Error: index should be integer, not float
 
     for(int i=0;i<5;i++)
     {
@@ -129,7 +130,7 @@ int main()
 
     for(int i=0;i<5;i++)
     {
-        scanf("%d", result[i]);
+        scanf("%d", result[i]); // Runtime Error: scanf needs address, use &result[i]
     }
 
     printf("\n");
@@ -147,7 +148,7 @@ int main()
 
     int stock[5] = {100,200,300,400,500};
 
-    if(stock[2] = 300)
+    if(stock[2] = 300) // Logical Error: assignment operator used instead of comparison operator ==
     {
         printf("Stock Available\n");
     }
@@ -156,7 +157,7 @@ int main()
 
     int backup[5];
 
-    backup = stock;
+    backup = stock; // Array Assignment Error: arrays cannot be assigned directly
 
     printf("%d\n", backup[0]);
 
@@ -166,13 +167,13 @@ int main()
 
     salary[0] = 25000.75;
 
-    printf("%d\n", salary[0]);
+    printf("%d\n", salary[0]); // Format Specifier Error: float should use %f or %.2f
 
     printf("\n");
 
     int inventory[5];
 
-    for(int i=0;i<=5;i++)
+    for(int i=0;i<=5;i++) // Array Bounds Error: should be i < 5
     {
         inventory[i] = i;
     }
@@ -188,7 +189,7 @@ int main()
 
     char city[8];
 
-    strcpy(city,"JaipurCity");
+    strcpy(city,"JaipurCity"); // Buffer Overflow Error: city[8] is too small
 
     printf("%s\n", city);
 
@@ -196,13 +197,14 @@ int main()
 
     int count[5];
 
-    count = inventory;
+    count = inventory; // Array Assignment Error: arrays cannot be assigned directly
 
     printf("%d\n", count[0]);
 
     printf("\n");
 
-    printf("Program Ended\n")
+    printf("Program Ended\n") // Syntax Error: missing semicolon (;)
 
     return 0;
 }
+```
