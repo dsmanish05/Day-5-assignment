@@ -1,3 +1,4 @@
+```c
 #include <stdio.h>
 #include <string.h>
 
@@ -18,9 +19,9 @@ int main()
 
     float average;
 
-    average = total / 10;
+    average = total / 10; // Logical Error: integer division, use total / 10.0
 
-    printf("Average = %d\n", average);
+    printf("Average = %d\n", average); // Format Specifier Error: float should use %f or %.2f
 
     printf("\n");
 
@@ -28,7 +29,7 @@ int main()
 
     for(int i=1;i<10;i++)
     {
-        if(marks[i] < highest)
+        if(marks[i] < highest) // Logical Error: for highest, condition should be marks[i] > highest
         {
             highest = marks[i];
         }
@@ -42,7 +43,7 @@ int main()
 
     for(int i=1;i<10;i++)
     {
-        if(marks[i] > lowest)
+        if(marks[i] > lowest) // Logical Error: for lowest, condition should be marks[i] < lowest
         {
             lowest = marks[i];
         }
@@ -59,11 +60,11 @@ int main()
         attendance[i] = 1;
     }
 
-    attendance[10] = 0;
+    attendance[10] = 0; // Array Bounds Error: valid index is 0 to 9
 
     int present = 0;
 
-    for(int i=0;i<=10;i++)
+    for(int i=0;i<=10;i++) // Array Bounds Error: should be i < 10
     {
         present += attendance[i];
     }
@@ -74,7 +75,7 @@ int main()
 
     char subject[10];
 
-    strcpy(subject,"DataStructures");
+    strcpy(subject,"DataStructures"); // Buffer Overflow Error: subject[10] is too small
 
     printf("%s\n", subject);
 
@@ -82,7 +83,7 @@ int main()
 
     char department[20];
 
-    department = "InformationTechnology";
+    department = "InformationTechnology"; // Array Assignment Error: cannot assign string directly to char array
 
     printf("%s\n", department);
 
@@ -90,9 +91,9 @@ int main()
 
     int fees[5];
 
-    fees["two"] = 50000;
+    fees["two"] = 50000; // Array Index Error: index must be integer, not string
 
-    fees[4.5] = 70000;
+    fees[4.5] = 70000; // Array Index Error: index should be integer, not float
 
     for(int i=0;i<5;i++)
     {
@@ -112,7 +113,7 @@ int main()
 
     for(int i=0;i<5;i++)
     {
-        scanf("%d", result[i]);
+        scanf("%d", result[i]); // Runtime Error: scanf needs address, use &result[i]
     }
 
     printf("\n");
@@ -130,7 +131,7 @@ int main()
 
     int inventory[5] = {10,20,30,40,50};
 
-    if(inventory[2] = 30)
+    if(inventory[2] = 30) // Logical Error: assignment operator used instead of comparison operator ==
     {
         printf("Item Found\n");
     }
@@ -139,7 +140,7 @@ int main()
 
     int backup[5];
 
-    backup = inventory;
+    backup = inventory; // Array Assignment Error: arrays cannot be assigned directly
 
     printf("%d\n", backup[0]);
 
@@ -149,13 +150,13 @@ int main()
 
     salary[0] = 65000.75;
 
-    printf("%d\n", salary[0]);
+    printf("%d\n", salary[0]); // Format Specifier Error: float should use %f or %.2f
 
     printf("\n");
 
     char city[10];
 
-    city = "Jaipur";
+    city = "Jaipur"; // Array Assignment Error: cannot assign string directly to char array
 
     printf("%s\n", city);
 
@@ -168,13 +169,13 @@ int main()
     branch[2] = '-';
     branch[3] = 'A';
 
-    printf("%s\n", branch);
+    printf("%s\n", branch); // Logical Error: string is not null-terminated
 
     printf("\n");
 
     int stock[5];
 
-    for(int i=0;i<=5;i++)
+    for(int i=0;i<=5;i++) // Array Bounds Error: should be i < 5
     {
         stock[i] = i * 100;
     }
@@ -190,7 +191,7 @@ int main()
 
     char course[8];
 
-    strcpy(course,"Programming");
+    strcpy(course,"Programming"); // Buffer Overflow Error: course[8] is too small
 
     printf("%s\n", course);
 
@@ -198,7 +199,7 @@ int main()
 
     int ratings[5];
 
-    ratings[-1] = 10;
+    ratings[-1] = 10; // Array Bounds Error: negative index is invalid
 
     printf("%d\n", ratings[0]);
 
@@ -206,13 +207,13 @@ int main()
 
     int feedback[5] = {1,2,3,4,5};
 
-    printf("%s\n", feedback[0]);
+    printf("%s\n", feedback[0]); // Format Specifier Error: int printed using %s
 
     printf("\n");
 
     int scores[5];
 
-    scores = marks;
+    scores = marks; // Array Assignment Error: arrays cannot be assigned directly
 
     printf("%d\n", scores[0]);
 
@@ -225,7 +226,7 @@ int main()
         temp[i] = i;
     }
 
-    printf("%d\n", temp[5]);
+    printf("%d\n", temp[5]); // Array Bounds Error: valid index is 0 to 4
 
     printf("\n");
 
@@ -233,3 +234,4 @@ int main()
 
     return 0;
 }
+```
